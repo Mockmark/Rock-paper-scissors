@@ -50,10 +50,10 @@ function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is 
             ++humanScore
         } else {
             choiceDisplay(computerSelection, humanSelection)
-            console.log("It's a tie! Choose again.")
+            console.log("It's a tie!")
         }
     } else {
-        console.log(`What is ${humChoice}? Your choice is incorrect, you can choose rock, paper or scissors only.`)
+        console.log(`What is ${humChoice}? Your choice is incorrect, you can choose rock, paper or scissors only. Try again.`)
         --counter
     }
 }
