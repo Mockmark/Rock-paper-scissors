@@ -34,9 +34,10 @@ function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is 
         } else if (compChoice == 2 && humChoice == "paper") {
             choiceDisplay(computerSelection, humanSelection)
             console.log("You lose! Scissors beats paper.")
-            ++computerScore            
+            ++computerScore         
+        //winning scenarios   
         } else if (compChoice == 0 && humChoice == "paper") {
-            choiceDisplay(computerSelection, humanSelection)//winning scenarios  
+            choiceDisplay(computerSelection, humanSelection)  
             console.log("You win! Paper beats rock.")
             ++humanScore
         } else if (compChoice == 1 && humChoice == "scissors") {
@@ -53,11 +54,9 @@ function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is 
         }
     } else {
         console.log(`What is ${humChoice}? Your choice is incorrect, you can choose rock, paper or scissors only.`)
+        --counter
     }
 }
-
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
 
 //create function displaying choices of players in console
 
@@ -74,5 +73,26 @@ function choiceDisplay (compChoiceArg, humChoiceArg) {
     console.log("You chose " + humChoiceArg + ".")
 }
 
-playRound(computerSelection, humanSelection);
+let computerSelection
+let humanSelection
+let counter = 1;
+
+function playGame() {
+    
+    if (counter < 6) {
+        console.log(`Round ${counter}`)
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        playRound(computerSelection, humanSelection);
+        ++counter
+        playGame()
+    } else {
+        if (humanScore < computerScore) {
+            console.log(`Final score: you - ${humanScore}, computer - ${computerScore}. You lost the game. :(`)
+        } else if (humanScore > computerScore) {console.log(`Final score: you - ${humanScore}, computer - ${computerScore}. You won the game! :)`)}
+        else {console.log(`Final score: you - ${humanScore}, computer - ${computerScore}. It's a tie!`)}
+    }
+}
+
+playGame()
 
