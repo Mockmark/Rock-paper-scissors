@@ -1,20 +1,17 @@
-const choiceSpan = 3
-
 //create function for the PC's choice
 
-function getComputerChoice(max) {
-    let compChoice = Math.floor(Math.random() * max);
-    return compChoice
+function getComputerChoice() {
+    let compChoiceArg = Math.floor(Math.random() * 3);
+    return compChoiceArg
 }
 
 //create function for the user's choice
 
-let HumChoice
-
-function getHumanChoice(arg) {
-    arg = prompt("Make your choice:")
-    arg = arg.toLowerCase()
-    return arg
+function getHumanChoice() {
+    let humChoicearg
+    humChoicearg = prompt("Make your choice:")
+    humChoicearg = humChoicearg.toLowerCase()
+    return humChoicearg
 }
 
 let humanScore = 0
@@ -22,9 +19,60 @@ let computerScore = 0
 
 //function for a single game round
 
-function playRound(humChoice, compChoice) {
-
+function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is paper, 2 is scissors]
+     //check if user's choice is correct
+    if (humChoice == "rock" || humChoice == "paper" || humChoice == "scissors") {
+        //losing scenarios
+        if (compChoice == 0 && humChoice == "scissors") {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("You lose! Rock beats scissors.")
+            ++computerScore
+        } else if (compChoice == 1 && humChoice == "rock") {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("You lose! Paper beats rock.")
+            ++computerScore
+        } else if (compChoice == 2 && humChoice == "paper") {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("You lose! Scissors beats paper.")
+            ++computerScore            
+        } else if (compChoice == 0 && humChoice == "paper") {
+            choiceDisplay(computerSelection, humanSelection)//winning scenarios  
+            console.log("You win! Paper beats rock.")
+            ++humanScore
+        } else if (compChoice == 1 && humChoice == "scissors") {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("You win! Scissors beats paper.")
+            ++humanScore
+        } else if (compChoice == 2 && humChoice == "rock") {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("You win! Rock beats scissors.")
+            ++humanScore
+        } else {
+            choiceDisplay(computerSelection, humanSelection)
+            console.log("It's a tie! Choose again.")
+        }
+    } else {
+        console.log(`What is ${humChoice}? Your choice is incorrect, you can choose rock, paper or scissors only.`)
+    }
 }
 
-console.log(getComputerChoice(choiceSpan))
-console.log(getHumanChoice(HumChoice))
+const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
+
+//create function displaying choices of players in console
+
+function choiceDisplay (compChoiceArg, humChoiceArg) {
+    let compChoice
+    if (compChoiceArg == 0) {
+        compChoice = "rock"
+    } else if (compChoiceArg == 1) {
+        compChoice = "paper"
+    } else if (compChoiceArg == 2) {
+        compChoice = "scissors"
+    }
+    console.log("Computer chose " + compChoice + ".")
+    console.log("You chose " + humChoiceArg + ".")
+}
+
+playRound(computerSelection, humanSelection);
+
