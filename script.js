@@ -21,7 +21,7 @@ let computerScore = 0
 
 function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is paper, 2 is scissors]
      //check if user's choice is correct
-    if (humChoice == "rock" || humChoice == "paper" || humChoice == "scissors") {
+    if ((humChoice == "rock") || (humChoice == "paper") || (humChoice == "scissors")) {
         //losing scenarios
         if (compChoice == 0 && humChoice == "scissors") {
             choiceDisplay(computerSelection, humanSelection)
@@ -95,4 +95,3 @@ function playGame() {
 }
 
 playGame()
-
