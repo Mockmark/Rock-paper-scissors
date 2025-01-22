@@ -8,9 +8,11 @@ function getComputerChoice() {
 //create function for the user's choice
 
 function getHumanChoice() {
-    let humChoicearg
+    const re = /[a-z]+/;
+    let humChoicearg;
     humChoicearg = prompt("Make your choice:")
     humChoicearg = humChoicearg.toLowerCase()
+    humChoicearg = re.exec(humChoicearg)
     return humChoicearg
 }
 
