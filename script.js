@@ -33,7 +33,7 @@ function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is 
             ++computerScore
         } else if (compChoice == 2 && humChoice == "paper") {
             choiceDisplay(computerSelection, humanSelection)
-            console.log("You lose! Scissors beats paper.")
+            console.log("You lose! Scissors beat paper.")
             ++computerScore         
         //winning scenarios   
         } else if (compChoice == 0 && humChoice == "paper") {
@@ -42,7 +42,7 @@ function playRound(compChoice, humChoice) { //playRound logic: [0 is rock, 1 is 
             ++humanScore
         } else if (compChoice == 1 && humChoice == "scissors") {
             choiceDisplay(computerSelection, humanSelection)
-            console.log("You win! Scissors beats paper.")
+            console.log("You win! Scissors beat paper.")
             ++humanScore
         } else if (compChoice == 2 && humChoice == "rock") {
             choiceDisplay(computerSelection, humanSelection)
